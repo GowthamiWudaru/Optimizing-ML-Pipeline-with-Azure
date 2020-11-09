@@ -52,7 +52,21 @@ In the hyperdrive run, we are only getting a single algorithm and tuning it. In 
 ## Future work
 **What are some areas of improvement for future experiments? Why might these improvements help the model?**
 
-Handling Data Imbalance Problem with weighted metrics or under/over – sampling techniques. 
+In automl run, we see the following in the DATA GUARDRAILS:
+<p>TYPE:         Class balancing detection</p>
+<p>STATUS:       ALERTED</p>
+<p>DETAILS:      Imbalanced data can lead to a falsely perceived positive effect of a model's accuracy because the input data has bias towards one class.</p>
+<pre>
+|Size of the smallest class|Name/Label of the smallest class|Number of samples in the training data|
++--------------------------+--------------------------------+--------------------------------------+
+|3692                      |yes                             |32950                                 |
+</pre>
+<p>We can handle Class Imbalance Problem with weighted metrics or under/over – sampling techniques. 
+<p>In weighted loss method, loss function is changed to ensure "equity". 
+<pre>L'(X,y)= -w1*log(P(Y=1|X)) if y=1
+         -w2*log(P(Y=0|X)) if y=0</pre>
+<p>where w1=(class0 cases)/(total cases) and w2=(class1 cases)/(total cases) ; class0 and class1 cases represent the majority and minority cases respectively.
+<p>In sampling techniques, we can add copies of instances from the under-represented class called over-sampling (or more formally sampling with replacement), or we can delete instances from the over-represented class, called under-sampling.  
 
 ## Proof of cluster clean up
 **If you did not delete your compute cluster in the code, please complete this section. Otherwise, delete this section.**
